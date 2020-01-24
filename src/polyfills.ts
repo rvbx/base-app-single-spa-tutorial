@@ -57,7 +57,9 @@
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
-
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+// SystemJS
+import 'systemjs/dist/system.min';
