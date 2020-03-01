@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DomainService } from './_domain/domain.service';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MICRO_APPS } from 'src/environments/environment';
 
 // Single SPA
@@ -8,16 +9,23 @@ import * as singleSpa from 'single-spa';
   selector: 'base-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class AppComponent {
   title = 'base-app';
+
+  constructor(
+    private domain: DomainService
+  ) {
+
+  }
 
   ngAfterViewInit() {
     /**
      * Registra os micro apps
      */
     MICRO_APPS.forEach(MICRO_APP => {
-      console.log('MICRO_APP', MICRO_APP);
+      // console.log('MICRO_APP', MICRO_APP);
       singleSpa.registerApplication(
         MICRO_APP.appName,
         // @ts-ignore
@@ -30,5 +38,11 @@ export class AppComponent {
     });
 
     singleSpa.start();
+  }
+
+  ngOnInit() {
+    let domain = this.domain.apiUrl;
+    console.log("domain do js externo: " + domain)
+    document.domain = domain;
   }
 }

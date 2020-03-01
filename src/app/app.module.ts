@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MicroAppComponent } from './micro-app/micro-app.component';
+import { DomainServiceProvider } from './_domain/domain.service.provider';
 
 const ROUTES_APP: Routes = [
   {
@@ -30,7 +31,9 @@ const ROUTES_APP: Routes = [
     BrowserModule,
     RouterModule.forRoot(ROUTES_APP)
   ],
-  providers: [],
+  providers: [
+    DomainServiceProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
