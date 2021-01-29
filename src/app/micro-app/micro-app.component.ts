@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'brad-micro-app',
+  selector: 'rvbx-micro-app',
   template: ``
 })
 export class MicroAppComponent {}
